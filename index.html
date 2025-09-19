@@ -14,6 +14,13 @@
   <script src="script.js"></script>
 
   <script>
+    // Create Alloy stub - this allows us to call alloy() immediately
+    // The calls will be queued until the real Alloy script loads
+    !function(n,o){o.forEach(function(o){n[o]||((n.__alloyNS=n.__alloyNS||
+      []).push(o),n[o]=function(){var u=arguments;return new Promise(
+      function(i,l){n[o].q.push([i,l,u])})},n[o].q=[])})}
+    (window,["alloy"]);
+
     // https://experienceleague.adobe.com/docs/experience-platform/edge/personalization/manage-flicker.html?lang=en
     !function(e,a,n,t){
       if (a) return;
@@ -23,38 +30,8 @@
           setTimeout(function(){o.parentNode&&o.parentNode.removeChild(o)},t)}}
     (document, document.location.href.indexOf("adobe_authoring_enabled") !== -1, "body { opacity: 0 !important }", 3000);
 
-    // Initialize Alloy
-    !function(n,o){o.forEach(function(o){n[o]||((n.__alloyNS=n.__alloyNS||
-      []).push(o),n[o]=function(){var u=arguments;return new Promise(
-      function(i,l){n[o].q.push([i,l,u])})},n[o].q=[])})}
-    (window,["alloy"]);
-
-    // Configure Alloy using config.js
-    alloy("configure", {
-      defaultConsent: "in",
-      edgeDomain: window.CONFIG.edgeDomain,
-      edgeConfigId: window.CONFIG.edgeConfigId,
-      orgId: window.CONFIG.orgId,
-      debugEnabled: window.CONFIG.debugEnabled,
-      thirdPartyCookiesEnabled: window.CONFIG.thirdPartyCookiesEnabled
-    });
-
-    // Send personalization request
-    const demoSurfaceName = window.CONFIG.surfaceName;
-    alloy("sendEvent", {
-      "renderDecisions": true,
-      personalization: {
-        surfaces: [demoSurfaceName]
-      },
-      "xdm": {
-        "web": {
-          "webPageDetails": {
-            "name": "Zaryflo Personalization Demo",
-            "URL": window.location.href
-          }
-        }
-      }
-    }).then(applyPersonalization(demoSurfaceName)).catch(displayError);
+    // Note: Alloy configuration and sendEvent will be called only after user provides sandbox ID
+    console.log('Alloy stub created, waiting for sandbox ID input...');
   </script>
   <script src="https://cdn1.adoberesources.net/alloy/2.21.0/alloy.min.js" async></script>
 </head>
@@ -80,20 +57,34 @@
   </div>
 </nav>
 
+<!-- Sandbox ID Input Form -->
+<div id="sandbox-form" class="sandbox-form-container">
+  <div class="sandbox-form-content">
+    <h2>AJO Personalization</h2>
+    <p>Please enter your Adobe Experience Platform Sandbox ID to continue:</p>
+    <form onsubmit="handleSandboxSubmit(event)">
+      <div class="form-group">
+        <input type="text" id="sandbox-id-input" class="form-control" placeholder="Enter your sandbox ID" required autofocus />
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary btn-lg">Initialize</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Main Content (hidden initially) -->
+<div id="main-content" style="display: none;">
 <div id="main-container" class="container">
   <div class="page-header">
-    <h1>Welcome to Zaryflo!</h1>
+    <h1>Welcome!</h1>
     <p class="lead">Experience personalized content powered by Adobe Journey Optimizer</p>
   </div>
 
   <!-- Personalization Surface -->
   <div id="sample-json-content">
-    <img id="ajo-decision" src="img/default-hero.png" width="640" alt="Personalized content" class="img-responsive img-rounded ajo-decision" />
+    <img id="ajo-decision" src="img/default-hero.svg" width="640" alt="Personalized content" class="img-responsive img-rounded ajo-decision" />
     
-    <div class="hero-content">
-      <h2 id="hero-title">Default Hero Title</h2>
-      <p id="hero-description">This is the default content that will be personalized based on your profile and behavior.</p>
-    </div>
   </div>
 
   <div class="content-section">
@@ -127,11 +118,62 @@
     </div>
   </div>
 </div>
+</div> <!-- End main-content -->
 
 <footer class="footer">
   <div class="container">
     <p class="text-muted">&copy; 2024 Zaryflo. Powered by Adobe Experience Platform.</p>
   </div>
 </footer>
+
+<script>
+  function handleSandboxSubmit(event) {
+    event.preventDefault();
+    const sandboxId = document.getElementById('sandbox-id-input').value.trim();
+    
+    if (!sandboxId) {
+      alert('Please enter a valid Sandbox ID');
+      return;
+    }
+    
+    console.log('Sandbox ID provided:', sandboxId);
+    
+    // Store sandbox ID in config
+    window.CONFIG.sandboxId = sandboxId;
+    
+    // Show main content
+    document.getElementById('sandbox-form').style.display = 'none';
+    document.getElementById('main-content').style.display = 'block';
+    
+    // Re-initialize Alloy with sandbox ID
+    initializeAlloyWithSandbox(sandboxId);
+  }
+  
+  function initializeAlloyWithSandbox(sandboxId) {
+    console.log('Initializing Alloy with sandbox ID:', sandboxId);
+    
+    // Configure Alloy with sandbox ID
+    alloy("configure", {
+      defaultConsent: "in",
+      edgeDomain: window.CONFIG.edgeDomain,
+      edgeConfigId: window.CONFIG.edgeConfigId,
+      orgId: window.CONFIG.orgId,
+      debugEnabled: window.CONFIG.debugEnabled,
+      thirdPartyCookiesEnabled: window.CONFIG.thirdPartyCookiesEnabled
+    }).then(function() {
+      console.log('Alloy configured successfully with sandbox ID:', sandboxId);
+      
+      // Send personalization event after configuration is complete
+      return alloy("sendEvent", {
+        "renderDecisions": true,
+        personalization: {
+          surfaces: [window.CONFIG.surfaceName]
+        },
+        "xdm": {}
+      });
+    }).then(applyPersonalization(window.CONFIG.surfaceName)).catch(displayError);
+  }
+  
+</script>
 </body>
 </html>

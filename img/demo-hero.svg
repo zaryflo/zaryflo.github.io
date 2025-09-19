@@ -1,0 +1,9 @@
+<svg width="640" height="360" viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="640" height="360" fill="#667eea"/>
+<rect x="20" y="20" width="600" height="320" fill="#764ba2"/>
+<text x="320" y="160" font-family="Arial, sans-serif" font-size="28" fill="white" text-anchor="middle" font-weight="bold">Personalized Content!</text>
+<text x="320" y="200" font-family="Arial, sans-serif" font-size="18" fill="white" text-anchor="middle">This content has been personalized</text>
+<text x="320" y="230" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle">using Adobe Journey Optimizer</text>
+<circle cx="320" cy="280" r="30" fill="white" opacity="0.3"/>
+<text x="320" y="290" font-family="Arial, sans-serif" font-size="20" fill="white" text-anchor="middle">✨</text>
+</svg>

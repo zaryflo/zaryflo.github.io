@@ -246,7 +246,7 @@ function initializeDemo() {
   
   // Use demo data from config when no AJO campaigns are configured
   const demoData = window.CONFIG?.demoContent || {
-    heroImageName: "demo-hero.png",
+    heroImageName: "demo-hero.svg",
     heroTitle: "Welcome to Personalized Zaryflo!",
     heroDescription: "This content has been personalized just for you using Adobe Journey Optimizer.",
     buttonActions: [

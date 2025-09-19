@@ -8,7 +8,7 @@
         {
           "name": "Default Experience",
           "content": {
-            "heroImageName": "default-hero.png",
+            "heroImageName": "default-hero.svg",
             "heroTitle": "Welcome to Zaryflo!",
             "heroDescription": "Discover amazing features and capabilities.",
             "buttonActions": [
@@ -33,7 +33,7 @@
         {
           "name": "Premium User Experience",
           "content": {
-            "heroImageName": "premium-hero.png",
+            "heroImageName": "premium-hero.svg",
             "heroTitle": "Welcome Back, Premium Member!",
             "heroDescription": "Enjoy exclusive features and personalized recommendations.",
             "buttonActions": [
@@ -58,7 +58,7 @@
         {
           "name": "New User Experience",
           "content": {
-            "heroImageName": "new-user-hero.png",
+            "heroImageName": "new-user-hero.svg",
             "heroTitle": "Welcome to Zaryflo!",
             "heroDescription": "Let us guide you through your first steps with our platform.",
             "buttonActions": [
@@ -90,7 +90,7 @@
         {
           "name": "Holiday Special",
           "content": {
-            "heroImageName": "holiday-hero.png",
+            "heroImageName": "holiday-hero.svg",
             "heroTitle": "Holiday Special Offer!",
             "heroDescription": "Get 50% off on all premium features this holiday season.",
             "buttonActions": [

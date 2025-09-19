@@ -15,14 +15,14 @@ const CONFIG = {
   thirdPartyCookiesEnabled: false,
   
   // Personalization settings
-  surfaceName: "#sample-json-content",
+  surfaceName: "demo-surface",
   
   // Demo settings
   enableDemoMode: true, // Set to false when using real AJO campaigns
   
   // Demo content (used when Alloy is not configured or no personalization is available)
   demoContent: {
-    heroImageName: "demo-hero.png",
+    heroImageName: "demo-hero.svg",
     heroTitle: "Welcome to Personalized Zaryflo!",
     heroDescription: "This content has been personalized just for you using Adobe Journey Optimizer.",
     buttonActions: [

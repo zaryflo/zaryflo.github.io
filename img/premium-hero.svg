@@ -1,0 +1,9 @@
+<svg width="640" height="360" viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="640" height="360" fill="#FFD700"/>
+<rect x="20" y="20" width="600" height="320" fill="#FFA500"/>
+<text x="320" y="150" font-family="Arial, sans-serif" font-size="32" fill="white" text-anchor="middle" font-weight="bold">PREMIUM MEMBER</text>
+<text x="320" y="190" font-family="Arial, sans-serif" font-size="20" fill="white" text-anchor="middle">Exclusive Features Await</text>
+<text x="320" y="220" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle">Welcome back, VIP!</text>
+<circle cx="320" cy="280" r="40" fill="white" opacity="0.3"/>
+<text x="320" y="290" font-family="Arial, sans-serif" font-size="30" fill="white" text-anchor="middle">👑</text>
+</svg>
