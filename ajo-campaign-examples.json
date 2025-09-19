@@ -1,0 +1,138 @@
+{
+  "campaign_examples": [
+    {
+      "name": "Hero Content Personalization",
+      "description": "Personalizes the hero section based on user segment",
+      "surface": "#sample-json-content",
+      "treatments": [
+        {
+          "name": "Default Experience",
+          "content": {
+            "heroImageName": "default-hero.png",
+            "heroTitle": "Welcome to Zaryflo!",
+            "heroDescription": "Discover amazing features and capabilities.",
+            "buttonActions": [
+              {
+                "id": 1,
+                "text": "Learn More",
+                "content": "Thanks for your interest!"
+              },
+              {
+                "id": 2,
+                "text": "Get Started",
+                "content": "Let's begin your journey!"
+              },
+              {
+                "id": 3,
+                "text": "Contact Us",
+                "content": "We'd love to hear from you!"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Premium User Experience",
+          "content": {
+            "heroImageName": "premium-hero.png",
+            "heroTitle": "Welcome Back, Premium Member!",
+            "heroDescription": "Enjoy exclusive features and personalized recommendations.",
+            "buttonActions": [
+              {
+                "id": 1,
+                "text": "View Premium Features",
+                "content": "Access your premium dashboard!"
+              },
+              {
+                "id": 2,
+                "text": "Upgrade Plan",
+                "content": "Unlock even more benefits!"
+              },
+              {
+                "id": 3,
+                "text": "Premium Support",
+                "content": "Get priority support assistance!"
+              }
+            ]
+          }
+        },
+        {
+          "name": "New User Experience",
+          "content": {
+            "heroImageName": "new-user-hero.png",
+            "heroTitle": "Welcome to Zaryflo!",
+            "heroDescription": "Let us guide you through your first steps with our platform.",
+            "buttonActions": [
+              {
+                "id": 1,
+                "text": "Take Tour",
+                "content": "Let's explore together!"
+              },
+              {
+                "id": 2,
+                "text": "Quick Start",
+                "content": "Get up and running in minutes!"
+              },
+              {
+                "id": 3,
+                "text": "Watch Tutorial",
+                "content": "Learn from our video guides!"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Seasonal Campaign",
+      "description": "Seasonal promotions and content",
+      "surface": "#sample-json-content",
+      "treatments": [
+        {
+          "name": "Holiday Special",
+          "content": {
+            "heroImageName": "holiday-hero.png",
+            "heroTitle": "Holiday Special Offer!",
+            "heroDescription": "Get 50% off on all premium features this holiday season.",
+            "buttonActions": [
+              {
+                "id": 1,
+                "text": "Claim Offer",
+                "content": "Holiday discount applied!"
+              },
+              {
+                "id": 2,
+                "text": "Shop Now",
+                "content": "Browse our holiday collection!"
+              },
+              {
+                "id": 3,
+                "text": "Gift Cards",
+                "content": "Perfect gifts for your loved ones!"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "setup_instructions": {
+    "step_1": "Create a new Web Campaign in Adobe Journey Optimizer",
+    "step_2": "Set the surface name to '#sample-json-content'",
+    "step_3": "Use the Code Editor to create personalized content",
+    "step_4": "Return JSON data matching the content format above",
+    "step_5": "Configure audience targeting for different treatments",
+    "step_6": "Test and publish the campaign"
+  },
+  "content_format": {
+    "heroImageName": "string - filename of the hero image",
+    "heroTitle": "string - main heading text",
+    "heroDescription": "string - descriptive text below the title",
+    "buttonActions": [
+      {
+        "id": "number - unique identifier for the button",
+        "text": "string - button label text",
+        "content": "string - message shown when button is clicked"
+      }
+    ]
+  }
+}
